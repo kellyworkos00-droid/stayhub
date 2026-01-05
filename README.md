@@ -190,7 +190,7 @@ This is a demonstration project. Feel free to fork and customize for your needs!
 
 ## License 📄
 
-This project is created for educational and demonstration purposes.
+This project is created by kelly work opperating systems.
 
 ## Contact 📧
 
