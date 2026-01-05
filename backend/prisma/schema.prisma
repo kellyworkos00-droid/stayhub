@@ -1,0 +1,104 @@
+// This is your Prisma schema file for Neon DB (PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Property {
+  id            String    @id @default(uuid())
+  title         String
+  location      String
+  hostName      String
+  pricePerNight Float
+  rating        Float     @default(0)
+  reviewCount   Int       @default(0)
+  images        String[]
+  propertyType  String
+  guests        Int
+  bedrooms      Int
+  beds          Int
+  bathrooms     Int
+  amenities     String[]
+  description   String    @db.Text
+  isSuperhost   Boolean   @default(false)
+  availableFrom DateTime?
+  availableTo   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  bookings      Booking[]
+  reviews       Review[]
+  favoritedBy   User[]    @relation("UserFavorites")
+
+  @@index([location])
+  @@index([pricePerNight])
+  @@index([rating])
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  avatar    String    @default("https://via.placeholder.com/150")
+  phone     String?
+  isHost    Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  bookings  Booking[]
+  reviews   Review[]
+  favorites Property[] @relation("UserFavorites")
+
+  @@index([email])
+}
+
+model Booking {
+  id          String        @id @default(uuid())
+  propertyId  String
+  userId      String
+  checkIn     DateTime
+  checkOut    DateTime
+  guests      Int
+  totalPrice  Float
+  status      BookingStatus @default(UPCOMING)
+  bookingDate DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([propertyId, checkIn, checkOut])
+}
+
+enum BookingStatus {
+  UPCOMING
+  COMPLETED
+  CANCELLED
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  propertyId String
+  userId     String
+  userName   String
+  userAvatar String   @default("https://via.placeholder.com/150")
+  rating     Float
+  comment    String   @db.Text
+  date       DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([userId])
+}

@@ -1,0 +1,226 @@
+import '../models/property.dart';
+import '../models/review.dart';
+
+class DataService {
+  static List<Property> getSampleProperties() {
+    return [
+      Property(
+        id: '1',
+        title: 'Luxury Beach Villa with Ocean View',
+        location: 'Malibu, California',
+        hostName: 'Sarah Johnson',
+        pricePerNight: 450,
+        rating: 4.95,
+        reviewCount: 127,
+        images: [
+          'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800',
+          'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800',
+          'https://images.unsplash.com/photo-1615571022219-eb45cf7faa9d?w=800',
+        ],
+        propertyType: 'Entire villa',
+        guests: 8,
+        bedrooms: 4,
+        beds: 5,
+        bathrooms: 3,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Pool',
+          'Hot tub',
+          'Beach access',
+          'BBQ grill',
+          'Ocean view',
+          'Parking',
+        ],
+        description:
+            'Experience luxury coastal living in this stunning beachfront villa. Wake up to breathtaking ocean views, enjoy your private pool, and relax in the hot tub as the sun sets over the Pacific.',
+        isSuperhost: true,
+      ),
+      Property(
+        id: '2',
+        title: 'Modern Downtown Loft',
+        location: 'New York, NY',
+        hostName: 'Michael Chen',
+        pricePerNight: 220,
+        rating: 4.87,
+        reviewCount: 89,
+        images: [
+          'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800',
+          'https://images.unsplash.com/photo-1502672260066-6bc357c229d4?w=800',
+          'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800',
+        ],
+        propertyType: 'Entire loft',
+        guests: 4,
+        bedrooms: 2,
+        beds: 2,
+        bathrooms: 2,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Gym',
+          'Workspace',
+          'City view',
+          'Elevator',
+          'Air conditioning',
+        ],
+        description:
+            'Stylish loft in the heart of Manhattan. Perfect for professionals and tourists alike. Walking distance to subway, restaurants, and major attractions.',
+        isSuperhost: true,
+      ),
+      Property(
+        id: '3',
+        title: 'Cozy Mountain Cabin',
+        location: 'Aspen, Colorado',
+        hostName: 'Emma Wilson',
+        pricePerNight: 195,
+        rating: 4.92,
+        reviewCount: 156,
+        images: [
+          'https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=800',
+          'https://images.unsplash.com/photo-1518732655012-5b447c66fa71?w=800',
+          'https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=800',
+        ],
+        propertyType: 'Entire cabin',
+        guests: 6,
+        bedrooms: 3,
+        beds: 4,
+        bathrooms: 2,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Fireplace',
+          'Heating',
+          'Mountain view',
+          'Ski-in/Ski-out',
+          'Hot tub',
+          'Parking',
+        ],
+        description:
+            'Escape to the mountains in this charming cabin. Enjoy world-class skiing, cozy nights by the fireplace, and stunning alpine views.',
+        isSuperhost: false,
+      ),
+      Property(
+        id: '4',
+        title: 'Artistic Studio Apartment',
+        location: 'Paris, France',
+        hostName: 'Pierre Dubois',
+        pricePerNight: 125,
+        rating: 4.78,
+        reviewCount: 64,
+        images: [
+          'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=800',
+          'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800',
+        ],
+        propertyType: 'Entire apartment',
+        guests: 2,
+        bedrooms: 1,
+        beds: 1,
+        bathrooms: 1,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Workspace',
+          'City view',
+          'Self check-in',
+        ],
+        description:
+            'Charming Parisian studio in the Marais district. Perfect for couples seeking an authentic Paris experience.',
+        isSuperhost: false,
+      ),
+      Property(
+        id: '5',
+        title: 'Tropical Paradise Bungalow',
+        location: 'Bali, Indonesia',
+        hostName: 'Wayan Putra',
+        pricePerNight: 89,
+        rating: 4.96,
+        reviewCount: 203,
+        images: [
+          'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800',
+          'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800',
+          'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800',
+        ],
+        propertyType: 'Entire bungalow',
+        guests: 3,
+        bedrooms: 1,
+        beds: 2,
+        bathrooms: 1,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Pool',
+          'Garden',
+          'Rice field view',
+          'Outdoor shower',
+          'Yoga space',
+        ],
+        description:
+            'Immerse yourself in Balinese culture. This traditional bungalow overlooks lush rice terraces and offers the perfect retreat.',
+        isSuperhost: true,
+      ),
+      Property(
+        id: '6',
+        title: 'Penthouse with City Lights',
+        location: 'Dubai, UAE',
+        hostName: 'Ahmed Al Maktoum',
+        pricePerNight: 580,
+        rating: 4.89,
+        reviewCount: 91,
+        images: [
+          'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfdr?w=800',
+          'https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=800',
+        ],
+        propertyType: 'Entire penthouse',
+        guests: 6,
+        bedrooms: 3,
+        beds: 4,
+        bathrooms: 3,
+        amenities: [
+          'Wifi',
+          'Kitchen',
+          'Pool',
+          'Gym',
+          'Concierge',
+          'City view',
+          'Parking',
+          'Elevator',
+        ],
+        description:
+            'Luxury penthouse with panoramic views of Dubai skyline. Features high-end amenities and modern design.',
+        isSuperhost: true,
+      ),
+    ];
+  }
+
+  static List<Review> getSampleReviews(String propertyId) {
+    return [
+      Review(
+        id: '1',
+        userName: 'Jessica Thompson',
+        userAvatar: '👩',
+        rating: 5.0,
+        comment:
+            'Absolutely stunning property! The views were incredible and the host was very accommodating. Would definitely stay again!',
+        date: DateTime.now().subtract(const Duration(days: 15)),
+      ),
+      Review(
+        id: '2',
+        userName: 'David Martinez',
+        userAvatar: '👨',
+        rating: 4.5,
+        comment:
+            'Great location and beautiful space. Only minor issue was the wifi speed, but everything else was perfect.',
+        date: DateTime.now().subtract(const Duration(days: 30)),
+      ),
+      Review(
+        id: '3',
+        userName: 'Emily Rodriguez',
+        userAvatar: '👩',
+        rating: 5.0,
+        comment:
+            'Best vacation rental experience ever! The property exceeded our expectations in every way. Highly recommend!',
+        date: DateTime.now().subtract(const Duration(days: 45)),
+      ),
+    ];
+  }
+}
